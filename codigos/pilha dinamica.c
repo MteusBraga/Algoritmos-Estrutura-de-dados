@@ -7,7 +7,7 @@ typedef struct NO{
 }NO;
 
 typedef struct Pilha{
-    NO *topo
+    NO *topo;
 }Pilha;
 
 void IniciarPilha(Pilha *p){
@@ -22,7 +22,7 @@ void Push(int dado, Pilha *p){
     }
     else{
         ptr->dado=dado;
-        ptr->prox=p->topo;
+        ptr->prox=p->topo; //aponta para onde o topo está apontando
         p->topo=ptr;
     }
 }
@@ -35,10 +35,10 @@ int Pop(Pilha *p){
         return;
     }
     else{
-        p->topo=ptr->prox;
-        ptr->prox=NULL;
-        dado=ptr->dado;
-        free(ptr);
+        p->topo=ptr->prox; // o Topo aponta para onde o Proximo esta apontando (para o nó anterior)
+        ptr->prox=NULL; //proximo aponta para null
+        dado=ptr->dado; //armazenar o valor removido
+        free(ptr); // libera o nó
         return dado;
     }
 }
